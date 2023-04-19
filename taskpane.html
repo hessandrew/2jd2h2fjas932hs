@@ -1,45 +1,78 @@
 <!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <!-- Office JavaScript API -->
-    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
-</head>
+    <script
+      type="text/javascript"
+      src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"
+    ></script>
+  </head>
 
-<body>
+  <body>
     <p>test</p>
-    <button id="helloButton">test</button>
-</body>
+    <button id="helloButton">test2</button>
+  </body>
 
-<script>
-
+  <script>
     Office.onReady((info) => {
-        if (info.host === Office.HostType.Outlook) {
-            document.getElementById("helloButton").onclick = sayHello;
-        }
+      if (info.host === Office.HostType.Outlook) {
+        document.getElementById("helloButton").onclick = sayHello;
+      }
     });
+
+    Office.initialize = function () {
+      // Add event handler for item selection change
+      Office.context.mailbox.addHandlerAsync(
+        Office.EventType.ItemSelectionChanged,
+        function (event) {
+          var item = Office.context.mailbox.item;
+          if (item.itemType === Office.MailboxEnums.ItemType.Message) {
+            // Get the body of the email
+            item.body.getAsync(Office.CoercionType.Text, function (result) {
+              if (result.status === Office.AsyncResultStatus.Succeeded) {
+                // Convert the body text to uppercase
+                var bodyText = result.value.toUpperCase();
+                // Update the email body with the uppercase text
+                item.body.setAsync(
+                  bodyText,
+                  { coercionType: Office.CoercionType.Text },
+                  function (result) {
+                    if (result.status === Office.AsyncResultStatus.Succeeded) {
+                      console.log("Email body updated with uppercase text.");
+                    } else {
+                      console.log(
+                        "Failed to update email body with uppercase text."
+                      );
+                    }
+                  }
+                );
+              } else {
+                console.log("Failed to get email body.");
+              }
+            });
+          }
+        }
+      );
+    };
 
     /**
      * Writes 'Hello world!' to a new message body.
      */
     function sayHello() {
-        Office.context.mailbox.item.body.setAsync(
-            "Hello world1111!",
-            {
-                coercionType: "html", // Write text as HTML
-            },
+      Office.context.mailbox.item.body.setAsync(
+        "Hello world1112!",
+        {
+          coercionType: "html", // Write text as HTML
+        },
 
-            // Callback method to check that setAsync succeeded
-            function (asyncResult) {
-                if (asyncResult.status ==
-                    Office.AsyncResultStatus.Failed) {
-                    write(asyncResult.error.message);
-                }
-            }
-        );
+        // Callback method to check that setAsync succeeded
+        function (asyncResult) {
+          if (asyncResult.status == Office.AsyncResultStatus.Failed) {
+            write(asyncResult.error.message);
+          }
+        }
+      );
     }
-
-</script>
-
+  </script>
 </html>
