@@ -3,12 +3,12 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
   xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
-  <Id>1e7e38da-7ad6-429a-9c6f-81aa1b9c9344</Id>
-  <Version>1.0.0.0</Version>
+  <Id>1e7e38da-7ad6-429a-9c6f-81aa1b9c9341</Id>
+  <Version>1.0.0.1</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Hello world"/>
-  <Description DefaultValue="A simple hello world Office Add-in."/>
+  <DisplayName DefaultValue="Hello world1"/>
+  <Description DefaultValue="A simple hello world Office Add-in. 1"/>
   <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"/>
@@ -83,12 +83,12 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://hessandrew.github.io/2jd2h2fjas932hs/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Contoso Add-in"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Hello world"/>
-        <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Hello world"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="Contoso Add-in 1"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Hello world 1"/>
+        <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Hello world 1"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="TaskpaneButton.SupertipText" DefaultValue="Open the Hello world add-in"/>
+        <bt:String id="TaskpaneButton.SupertipText" DefaultValue="Open the Hello world add-in 1"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
