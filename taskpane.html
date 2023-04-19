@@ -20,6 +20,33 @@
         }
     });
 
+    Office.initialize = function () {
+  // Add event handler for item selection change
+  Office.context.mailbox.addHandlerAsync(Office.EventType.ItemSelectionChanged, function (event) {
+    var item = Office.context.mailbox.item;
+    if (item.itemType === Office.MailboxEnums.ItemType.Message) {
+      // Get the body of the email
+      item.body.getAsync(Office.CoercionType.Text, function (result) {
+        if (result.status === Office.AsyncResultStatus.Succeeded) {
+          // Convert the body text to uppercase
+          var bodyText = result.value.toUpperCase();
+          // Update the email body with the uppercase text
+          item.body.setAsync(bodyText, { coercionType: Office.CoercionType.Text }, function (result) {
+            if (result.status === Office.AsyncResultStatus.Succeeded) {
+              console.log('Email body updated with uppercase text.');
+            } else {
+              console.log('Failed to update email body with uppercase text.');
+            }
+          });
+        } else {
+          console.log('Failed to get email body.');
+        }
+      });
+    }
+  });
+};
+
+
     /**
      * Writes 'Hello world!' to a new message body.
      */
