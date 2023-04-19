@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
   xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
-  <Id>1e7e38da-7ad6-429a-9c6f-81aa1b9c9341</Id>
+  <Id>1e7e38da-7ad6-429a-9c6f-81aa1b9c9342</Id>
   <Version>1.0.0.2</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
@@ -83,12 +83,12 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://hessandrew.github.io/2jd2h2fjas932hs/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Contoso Add-in 1"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Hello world 1"/>
-        <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Hello world 1"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="Contoso Add-in 2"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Hello world 2"/>
+        <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Hello world 2"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="TaskpaneButton.SupertipText" DefaultValue="Open the Hello world add-in 1"/>
+        <bt:String id="TaskpaneButton.SupertipText" DefaultValue="Open the Hello world add-in 2"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
