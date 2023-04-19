@@ -1,0 +1,46 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+</head>
+
+<body>
+    <p>This add-in will insert the text 'Hello world!' in a new message.</p>
+    <button id="helloButton">Say hello 1</button>
+</body>
+
+<script>
+
+Office.initialize = function () {
+  // Add event handler for item selection change
+  Office.context.mailbox.addHandlerAsync(Office.EventType.ItemSelectionChanged, function (event) {
+    var item = Office.context.mailbox.item;
+    if (item.itemType === Office.MailboxEnums.ItemType.Message) {
+      // Get the body of the email
+      item.body.getAsync(Office.CoercionType.Text, function (result) {
+        if (result.status === Office.AsyncResultStatus.Succeeded) {
+          // Convert the body text to uppercase
+          var bodyText = result.value.toUpperCase();
+          // Update the email body with the uppercase text
+          item.body.setAsync(bodyText, { coercionType: Office.CoercionType.Text }, function (result) {
+            if (result.status === Office.AsyncResultStatus.Succeeded) {
+              console.log('Email body updated with uppercase text.');
+            } else {
+              console.log('Failed to update email body with uppercase text.');
+            }
+          });
+        } else {
+          console.log('Failed to get email body.');
+        }
+      });
+    }
+  });
+};
+
+
+</script>
+
+</html>
